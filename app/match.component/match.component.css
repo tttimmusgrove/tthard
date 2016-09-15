@@ -1,0 +1,225 @@
+.questions, .scoreboard, .chat {
+    height: 50%;
+}
+
+.scoreboard, .chat {
+    border-top: 1px solid black;
+}
+
+.questionTitle {
+    text-align: center;
+    font-weight: bold;
+    font-size: 3rem;
+}
+
+.questionBox {
+    position: relative;
+    top: 2rem;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.questionButton {
+    width: 20rem;
+    height: 5rem;
+    font-weight: bold;
+}
+
+.scoreboard {
+    display: flex;
+    padding: 0;
+    font-family: 'Economica';
+}
+
+.player1 {
+    font-size: 3rem;
+    color: white;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(#003F87, blue);
+}
+
+.player1 .pointScore {
+    position: absolute;
+    left: 1rem;
+    bottom: 0rem;
+    font-size: 10rem;
+}
+
+.player1 .gameScore {
+    position: absolute;
+    top: 1rem;
+    right: 55%;
+}
+
+.player2 {
+    color: white;
+    font-size: 3rem;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(#DB2929, red);
+}
+
+.player2 .pointScore {
+    position: absolute;
+    font-size: 10rem;
+    right: 1rem;
+    bottom: 0rem;
+}
+
+.player2 .gameScore {
+    position: absolute;
+    top: 1rem;
+    right: 41%;
+}
+
+.player1 .serverBall {
+    position: absolute;
+    width: 4rem;
+    height: 4rem;
+    bottom: 1rem;
+    right: 55%;
+}
+
+.player2 .serverBall {
+    position: absolute;
+    width: 4rem;
+    height: 4rem;
+    bottom: 1rem;
+    right: 38%;
+}
+
+.newPoint {
+    position: absolute;
+    left: 1rem;
+    bottom: 1rem;
+    color: gold;
+}
+
+.finishMatch {
+    position: absolute;
+    right: 11rem;
+    bottom: 1rem;
+}
+
+.exitMatch {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+}
+
+.exitWarning {
+    font-size: 3rem;
+    z-index: 2;
+    width: 70%;
+    height: 80%;
+    position: absolute;
+    left: 15%;
+    top: 5%;
+    background-color: lightgrey;
+    box-shadow: 1rem 1rem 1rem darkgrey;
+    padding: 1rem;
+}
+
+.finishBox {
+    font-size: 3rem;
+    z-index: 2;
+    width: 70%;
+    height: 80%;
+    position: absolute;
+    left: 15%;
+    top: 5%;
+    background-color: lightgrey;
+    box-shadow: 1rem 1rem 1rem darkgrey;
+    padding: 1rem;
+}
+
+.undoGameBox {
+    font-size: 3rem;
+    z-index: 2;
+    width: 70%;
+    height: 80%;
+    position: absolute;
+    left: 15%;
+    top: 5%;
+    background-color: lightgrey;
+    box-shadow: 1rem 1rem 1rem darkgrey;
+    padding: 1rem;
+}
+
+.continueMatch {
+    position: absolute;
+    bottom: 5rem;
+    left: 5rem;
+}
+
+.exitHard {
+    position: absolute;
+    bottom: 5rem;
+    left: 25rem;
+}
+
+.doUndoGame {
+    position: absolute;
+    bottom: 5rem;
+    left: 25rem;
+}
+
+.dontUndoGame {
+    position: absolute;
+    bottom: 5rem;
+    left: 5rem;
+}
+
+.star {
+    font-size: 5rem;
+}
+
+.player1 .playerName {
+    position: absolute;
+    left: 1rem;
+    top: 0.5rem;
+}
+
+.player2 .playerName {
+    position: absolute;
+    right: 1rem;
+    top: 0.5rem;
+}
+
+.undoPoint {
+    position: absolute;
+    bottom: 1rem;
+    left: 20rem;
+}
+
+.undoGame {
+    position: absolute;
+    bottom: 1rem;
+    left: 30rem;
+}
+
+.playerNameEdit {
+    width: 10rem;
+    height: 4rem;
+    padding: 1rem;
+    color: black;
+    font-size: 2rem;
+}
+
+.player1 .playerNameEdit {
+    position: absolute;
+    left: 0.5rem;
+    top: 0.5rem;
+}
+
+.player2 .playerNameEdit {
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+}
+
+.notes {
+    border: 1px solid black;
+}

@@ -1,0 +1,183 @@
+<!--Question Area -->
+<div class="exitWarning" *ngIf="exitBox">
+    <p>
+        Are you sure you want to exit the match? All match data (for this match) will be lost!!
+    </p>
+    <p class="btn btn-success btn-lg continueMatch" (click)="exitWarning()">Continue Match</p>
+    <p class="btn btn-danger btn-lg exitHard" routerLink="/">Yes! Please Exit!</p>
+</div>
+<div class="finishBox" *ngIf="finishBox">
+    <p>
+        Are you sure the match is finished?
+    </p>
+    <p class="btn btn-default btn-lg continueMatch" (click)="finishMatch()">Continue Match</p>
+    <p class="btn btn-success btn-lg exitHard" routerLink='/matchAnalysis'>Finish Match</p>
+</div>
+<div class="undoGameBox" *ngIf="undoGameBox">
+    <p>
+        Are you sure you want to undo the game? All current game data will be lost! Finish the current game to save the data!
+    </p>
+    <p class="btn btn-danger btn-lg doUndoGame" (click)="fullyUndoGame()">Yes! Undo Game!</p>
+    <p class="btn btn-success btn-lg dontUndoGame" (click)="undoGame()">Continue Game</p>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 questions">
+            <p class="newPoint" *ngIf="question == 1">
+                New Point
+            </p>
+            <p class="questionTitle" *ngIf="question == 1">
+                Did your player win the point?
+            </p>
+            <div class="questionBox">
+                <p *ngIf="question == 1" (click)="incrementQuestion(); checkFirstPoint(); setWinner();  incrementPointGame()" class="btn btn-default btn-lg questionButton"><span class="network-name">Won</span></p>
+                <p *ngIf="question == 1" (click)="incrementQuestion(); checkFirstPoint(); setLoser();  incrementPointGame()" class="btn btn-default btn-lg questionButton"><span class="network-name">Lost</span></p>
+            </div>
+
+            <p class="questionTitle" *ngIf="question == 2">
+                Did you serve?
+            </p>
+            <div class="questionBox">
+                <p *ngIf="question == 2" (click)="incrementQuestion()" class="btn btn-default btn-lg questionButton"><span class="network-name">Yes</span></p>
+                <p *ngIf="question == 2" (click)="incrementQuestion(); setServer()" class="btn btn-default btn-lg questionButton"><span class="network-name">No</span></p>
+            </div>
+
+            <p class="questionTitle" *ngIf="question == 3 && win">
+                Which style did you use?
+            </p>
+            <p class="questionTitle" *ngIf="question == 3 && !win">
+                Which style did your opponent use?
+            </p>
+            <div class="questionBox">
+                <p *ngIf="question == 3" (click)="incrementQuestion(); setStyle()" class="btn btn-default btn-lg questionButton"><span class="network-name">Aggressive</span></p>
+                <p *ngIf="question == 3" (click)="incrementQuestion()" class="btn btn-default btn-lg questionButton"><span class="network-name">Defensive</span></p>
+            </div>
+
+            <p class="questionTitle" *ngIf="question == 4 && win">
+                Which ball did you win on?
+            </p>
+            <p class="questionTitle" *ngIf="question == 4 && !win">
+                Which ball did your opponent win on?
+            </p>
+            <div class="questionBox">
+                <p *ngIf="question == 4 && server" (click)="incrementQuestion(); setFirstShot(); setShot('Serve'); incrementQuestion()" class="btn btn-default btn-lg questionButton"><span class="network-name">Serve</span></p>
+                <p *ngIf="question == 4 && server" (click)="incrementQuestion()" class="btn btn-default btn-lg questionButton"><span class="network-name">3rd Ball</span></p>
+                <p *ngIf="question == 4 && server" (click)="incrementQuestion()" class="btn btn-default btn-lg questionButton"><span class="network-name">5th Ball or later</span></p>
+
+                <p *ngIf="question == 4 && !server" (click)="incrementQuestion(); setFirstShot(); setShot('Recieve'); incrementQuestion()" class="btn btn-default btn-lg questionButton"><span class="network-name">Recieve</span></p>
+                <p *ngIf="question == 4 && !server" (click)="incrementQuestion()" class="btn btn-default btn-lg questionButton"><span class="network-name">4th Ball</span></p>
+                <p *ngIf="question == 4 && !server" (click)="incrementQuestion()" class="btn btn-default btn-lg questionButton"><span class="network-name">6th Ball or later</span></p>
+            </div>
+
+            <p class="questionTitle" *ngIf="question == 5 && win && !firstShot">
+                Which shot did you use?
+            </p>
+            <p class="questionTitle" *ngIf="question == 5 && !win && !firstShot">
+                Which shot did your opponent use?
+            </p>
+            <div class="questionBox">
+                <p *ngIf="question == 5 && !firstShot && aggressive" (click)="incrementQuestion(); setShot('Loop')" class="btn btn-default btn-lg questionButton"><span class="network-name">Loop</span></p>
+                <p *ngIf="question == 5 && !firstShot && aggressive" (click)="incrementQuestion(); setShot('Smash')" class="btn btn-default btn-lg questionButton"><span class="network-name">Smash</span></p>
+
+                <p *ngIf="question == 5 && !firstShot && !aggressive" (click)="incrementQuestion(); setShot('Chop')" class="btn btn-default btn-lg questionButton"><span class="network-name">Chop</span></p>
+                <p *ngIf="question == 5 && !firstShot && !aggressive" (click)="incrementQuestion(); setShot('Block')" class="btn btn-default btn-lg questionButton"><span class="network-name">Block</span></p>
+                <p *ngIf="question == 5 && !firstShot && !aggressive" (click)="incrementQuestion(); setShot('Lob')" class="btn btn-default btn-lg questionButton"><span class="network-name">Lob</span></p>
+                <p *ngIf="question == 5 && !firstShot && !aggressive" (click)="incrementQuestion(); setShot('Fish')" class="btn btn-default btn-lg questionButton"><span class="network-name">Fish</span></p>
+            </div>
+
+            <p class="questionTitle" *ngIf="question == 6 && win">
+                Which side did you use?
+            </p>
+            <p class="questionTitle" *ngIf="question == 6 && !win">
+                Which side did your opponent use?
+            </p>
+            <div class="questionBox">
+                <p *ngIf="question == 6" (click)="incrementQuestion()" class="btn btn-default btn-lg questionButton"><span class="network-name">Backhand</span></p>
+                <p *ngIf="question == 6" (click)="incrementQuestion(); setForehand()" class="btn btn-default btn-lg questionButton"><span class="network-name">Forehand</span></p>
+            </div>
+
+            <p class="questionTitle" *ngIf="question == 7 && win">
+                Was it the same shot as last point?
+            </p>
+            <p class="questionTitle" *ngIf="question == 7 && !win">
+                Was it the same shot as last point?
+            </p>
+            <div class="questionBox">
+                <p *ngIf="question == 7" (click)="incrementQuestion(); setSameLast()" class="btn btn-default btn-lg questionButton"><span class="network-name">Yes</span></p>
+                <p *ngIf="question == 7" (click)="incrementQuestion()" class="btn btn-default btn-lg questionButton"><span class="network-name">No</span></p>
+            </div>
+
+            <p class="questionTitle" *ngIf="question == 8">
+                Did your player follow tactics?
+            </p>
+            <div class="questionBox">
+                <p *ngIf="question == 8" (click)="setTactics(); incrementQuestion()" class="btn btn-default btn-lg questionButton"><span class="network-name">Yes</span></p>
+                <p *ngIf="question == 8" (click)="incrementQuestion();" class="btn btn-default btn-lg questionButton"><span class="network-name">No</span></p>
+            </div>
+
+            <p class="questionTitle" *ngIf="question == 9">
+                How much SKILL did your player show?
+            </p>
+            <div class="questionBox">
+                <i class="fa fa-star star" aria-hidden="true" *ngIf="question == 9" (click)="setSkillRating(1); incrementQuestion()" ></i>
+                <i class="fa fa-star star" aria-hidden="true" *ngIf="question == 9" (click)="setSkillRating(2); incrementQuestion()" ></i>
+                <i class="fa fa-star star" aria-hidden="true" *ngIf="question == 9" (click)="setSkillRating(3); incrementQuestion()" ></i>
+                <i class="fa fa-star star" aria-hidden="true" *ngIf="question == 9" (click)="setSkillRating(4); incrementQuestion()" ></i>
+                <i class="fa fa-star star" aria-hidden="true" *ngIf="question == 9" (click)="setSkillRating(5); incrementQuestion()" ></i>
+            </div>
+
+            <p class="questionTitle" *ngIf="question == 10">
+                How much EFFORT did your player show?
+            </p>
+            <div class="questionBox">
+                <i class="fa fa-star star" aria-hidden="true" *ngIf="question == 10" (click)="setEffortRating(1); print(); newPoint()" ></i>
+                <i class="fa fa-star star" aria-hidden="true" *ngIf="question == 10" (click)="setEffortRating(2); print(); newPoint()" ></i>
+                <i class="fa fa-star star" aria-hidden="true" *ngIf="question == 10" (click)="setEffortRating(3); print(); newPoint()" ></i>
+                <i class="fa fa-star star" aria-hidden="true" *ngIf="question == 10" (click)="setEffortRating(4); print(); newPoint()" ></i>
+                <i class="fa fa-star star" aria-hidden="true" *ngIf="question == 10" (click)="setEffortRating(5); print(); newPoint()" ></i>
+            </div>
+
+            <p class="btn btn-info undoPoint" (click)="undoPoint()">Undo Point</p>
+            <p class="btn btn-info undoGame" (click)="undoGame()">Undo Game</p>
+            <p class="btn btn-success finishMatch" (click)="finishMatch()">Finish Match</p>
+            <p class="btn btn-danger exitMatch" (click)="exitWarning()">Exit Match</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-8 scoreboard">
+            <!-- <img src="" /> -->
+            <div class="player1">
+                <p class="playerName" *ngIf="!updatePlayerNames" (click)="updatePlayers()" (keyup.enter)="submitName()">{{firstPlayerName}}</p>
+                <input class="playerNameEdit" *ngIf="updatePlayerNames" (keyup.enter)="submitName()" type="text" [(ngModel)]="firstPlayerName">
+                <p class="pointScore">
+                    {{myPointScore}}
+                </p>
+                <img class="serverBall" *ngIf="server" src="http://pngimg.com/upload/ping_pong_PNG10364.png" />
+                <p class="gameScore">
+                    {{myGameScore}}
+                </p>
+            </div>
+            <div class="player2">
+                <p class="playerName" *ngIf="!updatePlayerNames" (keyup.enter)="submitName()" (click)="updatePlayers()">{{secondPlayerName}}</p>
+                <input class="playerNameEdit" *ngIf="updatePlayerNames" (keyup.enter)="submitName()" type="text" [(ngModel)]="secondPlayerName">
+                <p class="pointScore">
+                    {{opponentPointScore}}
+                </p>
+                <img class="serverBall" *ngIf="!server" src="http://pngimg.com/upload/ping_pong_PNG10364.png"/>
+                <p class="gameScore">
+                    {{opponentGameScore}}
+                </p>
+            </div>
+        </div>
+        <div class="col-xs-4 chat">
+            Notes:<br />
+            <input class="notes" type="textarea" [(ngModel)]="notes">
+        </div>
+    </div>
+</div>
+
+
+<!--Score Area -->
+
+
+<!--Chat Area -->

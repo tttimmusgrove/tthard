@@ -1,0 +1,8 @@
+{
+  "firebase": "tthard",
+  "public": ".",
+  "ignore": [
+    "firebase.json",
+    "**/.*"
+  ]
+}

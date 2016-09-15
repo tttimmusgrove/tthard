@@ -1,0 +1,193 @@
+<nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+        <div class="container topnav">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand topnav" routerLink="/">TTHard</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <button class="btn btn-primary btn-margin" (click)="auth.login()" *ngIf="!auth.authenticated()">Log In</button>
+                    </li>
+                    <li>
+                        <button class="btn btn-primary btn-margin" routerLink="/profile" *ngIf="auth.authenticated()">Profile</button>
+                    </li>
+                    <li>
+                        <button class="btn btn-primary btn-margin" (click)="auth.logout()" *ngIf="auth.authenticated()">Log Out</button>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+
+    <!-- Header -->
+    <a name="about"></a>
+    <div class="intro-header">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="intro-message">
+                        <h1>TTHARD</h1>
+                        <h3>A tool for coaches &amp; players to improve at Table Tennis</h3>
+                        <hr class="intro-divider">
+                        <ul class="list-inline intro-social-buttons">
+                            <li>
+                                <a href="#new" class="btn btn-default btn-lg"><span class="network-name">New Match</span></a>
+                            </li>
+                            <li>
+                                <a href="#analyze" class="btn btn-default btn-lg"><span class="network-name">Analyze Players</span></a>
+                            </li>
+                            <li>
+                                <a href="#current" class="btn btn-default btn-lg"><span class="network-name">Current Matches</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.intro-header -->
+
+    <!-- Page Content -->
+
+	<a  name="new"></a>
+    <div class="content-section-a">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-sm-6">
+                    <hr class="section-heading-spacer">
+                    <div class="clearfix"></div>
+                    <h2 class="section-heading">Start a new match and gather data</h2>
+                    <p class="lead">Start analyzing your players current match with the match analysis tool!</p>
+                    <a routerLink="/new" class="btn btn-default btn-lg"><span class="network-name">New Match</span></a>
+                </div>
+                <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+                    <img class="img-responsive" src="https://github.com/BlackrockDigital/startbootstrap-landing-page/blob/master/img/ipad.png?raw=true" alt="">
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.content-section-a -->
+    <a name="analyze"></a>
+    <div class="content-section-b">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
+                    <hr class="section-heading-spacer">
+                    <div class="clearfix"></div>
+                    <h2 class="section-heading">Analyze Players</h2>
+                    <p class="lead">Analyze any USATT or TTHard registered player.  See their match history over time.  As a coach, see your players statistics gathered from TTHard's match analysis tool!</p>
+                    <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><span class="network-name">Analyze</span></a>
+                </div>
+                <div class="col-lg-5 col-sm-pull-6  col-sm-6">
+                    <img class="img-responsive" src="https://github.com/BlackrockDigital/startbootstrap-landing-page/blob/master/img/dog.png?raw=true" alt="">
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.content-section-b -->
+
+    <a name="current"></a>
+    <div class="content-section-a">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-5 col-sm-6">
+                    <hr class="section-heading-spacer">
+                    <div class="clearfix"></div>
+                    <h2 class="section-heading">Watch current matches</h2>
+                    <p class="lead">Follow along with the score of any TTHard match that is currently being played!</p>
+                    <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><span class="network-name">Current Matches</span></a>
+                </div>
+                <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+                    <img class="img-responsive" src="https://github.com/BlackrockDigital/startbootstrap-landing-page/blob/master/img/phones.png?raw=true" alt="">
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.content-section-a -->
+
+	<a  name="contact"></a>
+    <div class="banner">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2>Connect to TTHard</h2>
+                </div>
+                <div class="col-lg-6">
+                    <ul class="list-inline banner-social-buttons">
+                        <li>
+                            <a href="http://tttimmusgrove.com/" target="_blank" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Creator</span></a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/tttimmusgrove" target="_blank" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/tttimmusgrove" target="_blank" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Linkedin</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.banner -->
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="list-inline">
+                        <li>
+                            <a href="#">Home</a>
+                        </li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li>
+                            <a href="#new">New Match</a>
+                        </li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li>
+                            <a href="#analyze">Analyze Players</a>
+                        </li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li>
+                            <a href="#current">Current Matches</a>
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted small">Copyright &copy; TTHard 2014. All Rights Reserved</p>
+                </div>
+            </div>
+        </div>
+    </footer>
